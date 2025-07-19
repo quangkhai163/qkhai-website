@@ -1,114 +1,137 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tải File Python</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <title>Buff Like Free Fire</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Orbitron', sans-serif;
+    }
     body {
-      background-image: url('https://images.unsplash.com/photo-1519125323398-675f0ddb6308');
-      background-size: cover;
-      background-position: center;
+      background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
+      color: #fff;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+    .container {
+      background: #202020;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 25px #00ffcc44;
+      max-width: 450px;
+      width: 100%;
+      text-align: center;
+    }
+    .logo {
+      width: 160px;
+      margin: 0 auto 20px;
+    }
+    h1 {
+      color: #00ffc8;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px #00ffc855;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 14px;
+      margin: 12px 0;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    input, select {
+      background-color: #2c2c2c;
+      color: #fff;
+      outline: none;
+    }
+    button {
+      background: linear-gradient(90deg, #00ffc8, #00b3ff);
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 255, 200, 0.4);
+    }
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 255, 200, 0.6);
+    }
+    #result {
+      background-color: #111;
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      min-height: 60px;
+      box-shadow: inset 0 0 10px #00ffc855;
+      white-space: pre-line;
+    }
+    .highlight {
+      color: #00ffc8;
+      font-weight: bold;
+    }
+    .footer {
+      margin-top: 15px;
+      font-size: 14px;
+      opacity: 0.6;
     }
   </style>
 </head>
-<body class="bg-black bg-opacity-50 text-white min-h-screen">
-  <div class="container mx-auto p-6 bg-black bg-opacity-60 rounded-lg shadow-lg mt-10">
-    <h1 class="text-3xl font-bold mb-6 text-center">📂 File tiện ích by quang khải</h1>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      
-      <div>
-        <a href="khai/GPT-4o.py" class="text-blue-400 font-semibold hover:underline">GPT-4o.py</a>
-        <p class="text-sm text-gray-300">Mô tả: File chính liên quan đến GPT-4o (AI 4.0).</p>
-      </div>
+<body>
 
-      <div>
-        <a href="khai/countryinfo.py" class="text-blue-400 font-semibold hover:underline">countryinfo.py</a>
-        <p class="text-sm text-gray-300">Mô tả: Lấy thông tin về quốc gia (Thông tin các quốc gia).</p>
-      </div>
-
-      <div>
-        <a href="khai/gaitt.py" class="text-blue-400 font-semibold hover:underline">gaitt.py</a>
-        <p class="text-sm text-gray-300">Mô tả: Giao diện hoặc tiện ích gọi AI (Random videogai).</p>
-      </div>
-
-      <div>
-        <a href="khai/ggdich.py" class="text-blue-400 font-semibold hover:underline">ggdich.py</a>
-        <p class="text-sm text-gray-300">Mô tả: Dịch ngôn ngữ bằng Google Translate (gg dịch).</p>
-      </div>
-
-      <div>
-        <a href="khai/github.py" class="text-blue-400 font-semibold hover:underline">github.py</a>
-        <p class="text-sm text-gray-300">Mô tả: Kết nối hoặc xử lý API GitHub (sửa mô tả tại đây).</p>
-      </div>
-
-      <div>
-        <a href="khai/kqxs.py" class="text-blue-400 font-semibold hover:underline">kqxs.py</a>
-        <p class="text-sm text-gray-300">Mô tả: Lấy kết quả xổ số (sửa mô tả tại đây).</p>
-      </div>
-
-      <div>
-        <a href="khai/qr.py" class="text-blue-400 font-semibold hover:underline">qr.py</a>
-        <p class="text-sm text-gray-300">Mô tả: Tạo hoặc đọc mã QR (sửa mô tả tại đây).</p>
-      </div>
-
-      <div>
-        <a href="khai/regfb.py" class="text-blue-400 font-semibold hover:underline">regfb.py</a>
-        <p class="text-sm text-gray-300">Mô tả: Đăng ký tài khoản Facebook tự động (sửa mô tả tại đây).</p>
-      </div>
-
-      <div>
-        <a href="khai/search.py" class="text-blue-400 font-semibold hover:underline">search.py</a>
-        <p class="text-sm text-gray-300">Mô tả: Công cụ tìm kiếm (sửa mô tả tại đây).</p>
-      </div>
-
-      <div>
-        <a href="khai/sex.py" class="text-blue-400 font-semibold hover:underline">sex.py</a>
-        <p class="text-sm text-gray-300">Mô tả: Nội dung chưa rõ, cần xem lại kỹ (sửa mô tả tại đây).</p>
-      </div>
-
-      <div>
-        <a href="khai/spotify.py" class="text-blue-400 font-semibold hover:underline">spotify.py</a>
-        <p class="text-sm text-gray-300">Mô tả: Liên quan đến Spotify API hoặc nghe nhạc (sửa mô tả tại đây).</p>
-      </div>
-
-      <div>
-        <a href="khai/thoitiet.py" class="text-blue-400 font-semibold hover:underline">thoitiet.py</a>
-        <p class="text-sm text-gray-300">Mô tả: Dự báo thời tiết (sửa mô tả tại đây).</p>
-      </div>
-
-      <div>
-        <a href="khai/thongtin.py" class="text-blue-400 font-semibold hover:underline">thongtin.py</a>
-        <p class="text-sm text-gray-300">Mô tả: Hiển thị hoặc truy vấn thông tin người dùng (sửa mô tả tại đây).</p>
-      </div>
-
-      <div>
-        <a href="khai/tiktok.py" class="text-blue-400 font-semibold hover:underline">tiktok.py</a>
-        <p class="text-sm text-gray-300">Mô tả: Tải hoặc xử lý video TikTok (sửa mô tả tại đây).</p>
-      </div>
-
-      <div>
-        <a href="khai/time.py" class="text-blue-400 font-semibold hover:underline">time.py</a>
-        <p class="text-sm text-gray-300">Mô tả: Xử lý thời gian, hẹn giờ, đếm ngược... (sửa mô tả tại đây).</p>
-      </div>
-
-      <div>
-        <a href="khai/tttiktok.py" class="text-blue-400 font-semibold hover:underline">tttiktok.py</a>
-        <p class="text-sm text-gray-300">Mô tả: Tiện ích mở rộng cho TikTok (sửa mô tả tại đây).</p>
-      </div>
-
-      <div>
-        <a href="khai/tv.py" class="text-blue-400 font-semibold hover:underline">tv.py</a>
-        <p class="text-sm text-gray-300">Mô tả: Xem TV online hoặc thông tin kênh (sửa mô tả tại đây).</p>
-      </div>
-
-      <div>
-        <a href="khai/voice.py" class="text-blue-400 font-semibold hover:underline">voice.py</a>
-        <p class="text-sm text-gray-300">Mô tả: Xử lý giọng nói hoặc chuyển văn bản thành giọng nói (sửa mô tả tại đây).</p>
-      </div>
-
-    </div>
+  <div class="container">
+    <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Free_Fire_logo.svg/512px-Free_Fire_logo.svg.png" alt="Free Fire Logo">
+    <h1>🔥 Buff Like Free Fire</h1>
+    <input type="text" id="uid" placeholder="🔹 Nhập UID Free Fire">
+    <select id="region">
+      <option value="asia">🌏 Asia</option>
+      <option value="usa">🇺🇸 USA</option>
+      <option value="eu">🇪🇺 Europe</option>
+    </select>
+    <button onclick="buffLike()">🚀 Bắt đầu Buff Like</button>
+    <div id="result">⏳ Chưa có yêu cầu nào...</div>
+    <div class="footer">Web by <strong>qkhaiDev</strong></div>
   </div>
+
+  <script>
+    function buffLike() {
+      const uid = document.getElementById("uid").value.trim();
+      const region = document.getElementById("region").value;
+      const result = document.getElementById("result");
+
+      if (!uid) {
+        result.innerText = "⚠️ Vui lòng nhập UID Free Fire!";
+        return;
+      }
+
+      result.innerText = "⏳ Đang gửi yêu cầu buff like...";
+
+      const apiUrl = `https://ending-paid-likes.vercel.app/like-jenil?uid=${uid}&server_name=${region}&key=ENDxJNL`;
+
+      fetch(apiUrl)
+        .then(res => res.json())
+        .then(data => {
+          if (data && data.status === 2) {
+            result.innerHTML = `
+              ✅ <span class="highlight">${data.PlayerNickname}</span> đã được buff like thành công!\n
+              ➕ Likes đã buff: <span class="highlight">${data.LikesGivenByAPI}</span>
+              📉 Likes trước: <span class="highlight">${data.LikesbeforeCommand}</span>
+              📈 Likes sau: <span class="highlight">${data.LikesafterCommand}</span>
+              🆔 UID: <span class="highlight">${data.UID}</span>
+            `;
+          } else {
+            result.innerText = "❌ Yêu cầu thất bại hoặc API không trả về đúng dữ liệu.";
+          }
+        })
+        .catch(err => {
+          result.innerText = "❌ Lỗi gửi yêu cầu: " + err.message;
+        });
+    }
+  </script>
 </body>
 </html>
