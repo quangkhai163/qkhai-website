@@ -1,128 +1,139 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Buff Like Free Fire | qkhaiDeveloper</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Telegram Bot Panel</title>
   <style>
     body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
       margin: 0;
-      font-family: 'Orbitron', sans-serif;
-      background: linear-gradient(to bottom, #0f172a, #1e293b);
-      color: #f8fafc;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 40px 20px;
-      text-align: center;
+      padding: 0;
     }
-
-    h1 {
-      font-size: 32px;
-      color: #38bdf8;
-      margin-bottom: 10px;
-    }
-
-    .logo {
-      width: 70px;
-      margin-bottom: 10px;
-    }
-
-    input, button {
-      padding: 12px 18px;
-      margin: 10px 0;
-      font-size: 16px;
-      border: none;
-      border-radius: 10px;
-      width: 260px;
-      max-width: 90%;
-    }
-
-    input {
-      background: #334155;
-      color: #f1f5f9;
-    }
-
-    button {
-      background-color: #22c55e;
-      color: white;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    button:hover {
-      background-color: #16a34a;
-      transform: scale(1.05);
-    }
-
-    .result {
-      background: #0f172a;
-      margin-top: 25px;
-      padding: 20px;
-      border-radius: 12px;
-      width: 90%;
+    .container {
       max-width: 500px;
-      white-space: pre-wrap;
-      word-break: break-word;
+      margin: 30px auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-
-    footer {
-      margin-top: 40px;
-      font-size: 14px;
-      color: #94a3b8;
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+    input[type="text"],
+    textarea,
+    input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    button {
+      width: 100%;
+      background-color: #4ea2f0;
+      color: white;
+      padding: 12px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background-color: #3b8ad8;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 0.9em;
+      color: #777;
     }
   </style>
 </head>
 <body>
-  <img src="https://cdn-icons-png.flaticon.com/512/8703/8703520.png" class="logo" alt="Like Icon" />
-  <h1>Buff Like Free Fire</h1>
-  <p>Web by <b>qkhaiDeveloper</b></p>
 
-  <input type="text" id="uid" placeholder="🔢 Nhập UID" />
-  <br />
-  <input type="text" id="server" placeholder="🌍 Nhập server (Vietnam...)" />
-  <br />
-  <button onclick="sendBuff()">🚀 Gửi Buff Ngay</button>
+<div class="container">
+  <h2>Telegram Bot Panel</h2>
 
-  <div class="result" id="result">📦 Kết quả sẽ hiển thị tại đây...</div>
+  <label for="token">Bot Token</label>
+  <input type="text" id="token" placeholder="Enter your bot token" />
 
-  <footer>&copy; 2025 - qkhaiDeveloper | All rights reserved</footer>
+  <label for="chat">Select Chat</label>
+  <input type="text" id="chatId" placeholder="Enter chat ID" />
 
-  <script>
-    async function sendBuff() {
-      const uid = document.getElementById("uid").value.trim();
-      const server = document.getElementById("server").value.trim();
-      const result = document.getElementById("result");
+  <label for="message">Message / Caption</label>
+  <textarea id="message" rows="4" placeholder="Enter your message or caption here..."></textarea>
 
-      if (!uid || !server) {
-        result.textContent = "⚠️ Vui lòng nhập đầy đủ UID và server.";
-        return;
+  <label for="file">File (Optional)</label>
+  <input type="file" id="file" />
+
+  <button onclick="send()">Send 📤</button>
+
+  <div class="footer">by qkhaiDeveloper</div>
+</div>
+
+<script>
+  async function send() {
+    const token = document.getElementById("token").value.trim();
+    const chatId = document.getElementById("chatId").value.trim();
+    const message = document.getElementById("message").value.trim();
+    const fileInput = document.getElementById("file");
+
+    if (!token || !chatId) {
+      alert("Please fill in the bot token and chat ID.");
+      return;
+    }
+
+    if (fileInput.files.length > 0) {
+      const file = fileInput.files[0];
+      const formData = new FormData();
+      formData.append("chat_id", chatId);
+      formData.append("caption", message);
+      formData.append("document", file); // Hoặc "photo" nếu là ảnh
+
+      const res = await fetch(`https://api.telegram.org/bot${token}/sendDocument`, {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await res.json();
+      if (data.ok) {
+        alert("Message with file sent successfully!");
+      } else {
+        alert("Error: " + data.description);
       }
 
-      const url = `https://ff-dark-god-like.vercel.app/like?uid=${uid}&server_name=${server}`;
-      result.textContent = "⏳ Đang gửi yêu cầu...";
+    } else {
+      const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message
+        })
+      });
 
-      try {
-        const res = await fetch(url);
-        const data = await res.json();
-
-        if (data.status === 2) {
-          result.innerHTML = `
-✅ <b>Buff Thành Công!</b><br><br>
-👤 <b>Tên:</b> ${data.PlayerNickname}<br>
-🆔 <b>UID:</b> ${data.UID}<br>
-👍 <b>Likes Trước:</b> ${data.LikesbeforeCommand}<br>
-🔥 <b>Likes Sau:</b> ${data.LikesafterCommand}<br>
-💚 <b>Đã buff:</b> ${data.LikesGivenByAPI}
-          `;
-        } else {
-          result.textContent = "⚠️ Không thể buff. Có thể UID sai hoặc API lỗi.";
-        }
-      } catch (err) {
-        result.textContent = "❌ Lỗi gọi API: " + err.message;
+      const data = await res.json();
+      if (data.ok) {
+        alert("Message sent successfully!");
+      } else {
+        alert("Error: " + data.description);
       }
     }
-  </script>
+  }
+</script>
+
 </body>
 </html>
