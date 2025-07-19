@@ -1,136 +1,127 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>Buff Like Free Fire</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buff Like Free Fire | qkhaiDeveloper</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-      font-family: 'Orbitron', sans-serif;
-    }
     body {
-      background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
-      color: #fff;
       margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(to bottom, #0f172a, #1e293b);
+      color: #f8fafc;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
       flex-direction: column;
-    }
-    .container {
-      background: #202020;
-      padding: 40px;
-      border-radius: 15px;
-      box-shadow: 0 0 25px #00ffcc44;
-      max-width: 450px;
-      width: 100%;
+      align-items: center;
+      padding: 40px 20px;
       text-align: center;
     }
-    .logo {
-      width: 160px;
-      margin: 0 auto 20px;
-    }
+
     h1 {
-      color: #00ffc8;
-      margin-bottom: 20px;
-      text-shadow: 0 0 10px #00ffc855;
+      font-size: 32px;
+      color: #38bdf8;
+      margin-bottom: 10px;
     }
-    input, select, button {
-      width: 100%;
-      padding: 14px;
-      margin: 12px 0;
-      border: none;
-      border-radius: 8px;
+
+    .logo {
+      width: 70px;
+      margin-bottom: 10px;
+    }
+
+    input, button {
+      padding: 12px 18px;
+      margin: 10px 0;
       font-size: 16px;
-    }
-    input, select {
-      background-color: #2c2c2c;
-      color: #fff;
-      outline: none;
-    }
-    button {
-      background: linear-gradient(90deg, #00ffc8, #00b3ff);
-      color: #000;
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0, 255, 200, 0.4);
-    }
-    button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 20px rgba(0, 255, 200, 0.6);
-    }
-    #result {
-      background-color: #111;
-      margin-top: 20px;
-      padding: 15px;
+      border: none;
       border-radius: 10px;
-      min-height: 60px;
-      box-shadow: inset 0 0 10px #00ffc855;
-      white-space: pre-line;
+      width: 260px;
+      max-width: 90%;
     }
-    .highlight {
-      color: #00ffc8;
-      font-weight: bold;
+
+    input {
+      background: #334155;
+      color: #f1f5f9;
     }
-    .footer {
-      margin-top: 15px;
+
+    button {
+      background-color: #22c55e;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #16a34a;
+      transform: scale(1.05);
+    }
+
+    .result {
+      background: #0f172a;
+      margin-top: 25px;
+      padding: 20px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 500px;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    footer {
+      margin-top: 40px;
       font-size: 14px;
-      opacity: 0.6;
+      color: #94a3b8;
     }
   </style>
 </head>
 <body>
+  <img src="https://cdn-icons-png.flaticon.com/512/8703/8703520.png" class="logo" alt="Like Icon" />
+  <h1>Buff Like Free Fire</h1>
+  <p>Web by <b>qkhaiDeveloper</b></p>
 
-  <div class="container">
-    <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Free_Fire_logo.svg/512px-Free_Fire_logo.svg.png" alt="Free Fire Logo">
-    <h1>🔥 Buff Like Free Fire</h1>
-    <input type="text" id="uid" placeholder="🔹 Nhập UID Free Fire">
-    <select id="region">
-      <option value="asia">🌏 Asia</option>
-      <option value="usa">🇺🇸 USA</option>
-      <option value="eu">🇪🇺 Europe</option>
-    </select>
-    <button onclick="buffLike()">🚀 Bắt đầu Buff Like</button>
-    <div id="result">⏳ Chưa có yêu cầu nào...</div>
-    <div class="footer">Web by <strong>qkhaiDev</strong></div>
-  </div>
+  <input type="text" id="uid" placeholder="🔢 Nhập UID" />
+  <br />
+  <input type="text" id="server" placeholder="🌍 Nhập server (Vietnam...)" />
+  <br />
+  <button onclick="sendBuff()">🚀 Gửi Buff Ngay</button>
+
+  <div class="result" id="result">📦 Kết quả sẽ hiển thị tại đây...</div>
+
+  <footer>&copy; 2025 - qkhaiDeveloper | All rights reserved</footer>
 
   <script>
-    function buffLike() {
+    async function sendBuff() {
       const uid = document.getElementById("uid").value.trim();
-      const region = document.getElementById("region").value;
+      const server = document.getElementById("server").value.trim();
       const result = document.getElementById("result");
 
-      if (!uid) {
-        result.innerText = "⚠️ Vui lòng nhập UID Free Fire!";
+      if (!uid || !server) {
+        result.textContent = "⚠️ Vui lòng nhập đầy đủ UID và server.";
         return;
       }
 
-      result.innerText = "⏳ Đang gửi yêu cầu buff like...";
+      const url = `https://ff-dark-god-like.vercel.app/like?uid=${uid}&server_name=${server}`;
+      result.textContent = "⏳ Đang gửi yêu cầu...";
 
-      const apiUrl = `https://ff-dark-god-like.vercel.app/like?uid={uid}&server_name={region}`;
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
 
-      fetch(apiUrl)
-        .then(res => res.json())
-        .then(data => {
-          if (data && data.status === 2) {
-            result.innerHTML = `
-              ✅ <span class="highlight">${data.PlayerNickname}</span> đã được buff like thành công!\n
-              ➕ Likes đã buff: <span class="highlight">${data.LikesGivenByAPI}</span>
-              📉 Likes trước: <span class="highlight">${data.LikesbeforeCommand}</span>
-              📈 Likes sau: <span class="highlight">${data.LikesafterCommand}</span>
-              🆔 UID: <span class="highlight">${data.UID}</span>
-            `;
-          } else {
-            result.innerText = "❌ Yêu cầu thất bại hoặc API không trả về đúng dữ liệu.";
-          }
-        })
-        .catch(err => {
-          result.innerText = "❌ Lỗi gửi yêu cầu: " + err.message;
-        });
+        if (data.status === 2) {
+          result.innerHTML = `
+✅ <b>Buff Thành Công!</b><br><br>
+👤 <b>Tên:</b> ${data.PlayerNickname}<br>
+🆔 <b>UID:</b> ${data.UID}<br>
+👍 <b>Likes Trước:</b> ${data.LikesbeforeCommand}<br>
+🔥 <b>Likes Sau:</b> ${data.LikesafterCommand}<br>
+💚 <b>Đã buff:</b> ${data.LikesGivenByAPI}
+          `;
+        } else {
+          result.textContent = "⚠️ Không thể buff. Có thể UID sai hoặc API lỗi.";
+        }
+      } catch (err) {
+        result.textContent = "❌ Lỗi gọi API: " + err.message;
+      }
     }
   </script>
 </body>
